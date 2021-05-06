@@ -10,12 +10,10 @@ def generateOTP() :
     return OTP
 
 def send_otp(request):
-    email=request.GET.get   ("email")
-    print(email)
+    email=request.GET.get("email")
     o=generateOTP()
     htmlgen = '<p>Your OTP is <strong>'+o+'</strong></p>'
     send_mail('OTP request',o,'<gmail id>',[email],fail_silently=False,html_message=htmlgen)
-    print(o)
     return HttpResponse(o)
 
 def home(request):
